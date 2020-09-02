@@ -1,0 +1,51 @@
+sysctl -w vm.swappiness=1
+
+# echo 10 > /proc/sys/vm/swappiness
+cat /proc/sys/vm/swappiness
+
+#drop cache 1 = free page cache,  2= deentries and inodes , 3 = pagecache, dentries and inodes:
+
+echo 3 > /proc/sys/vm/drop_caches
+
+sync && echo 3 > /proc/sys/vm/drop_caches &
+
+# memory allocation details. RAM used as cache and buffers will be here.
+ slabtop -d 1  -s c
+
+
+ vfs_cache_pressure=512
+
+# sshfs
+  sshfs -o allow_other,defer_permissions,IdentityFile=~/.ssh/id_rsa indigoedge@cc.agileblaze.com:/home/indigoedge ~b5413b/hack/code/
+
+# is cache being hit ? look for headers
+
+ curl -s -D - https://agileblaze.com/  -o /dev/null
+ 
+ 
+ # create file based swap
+ 
+ sudo fallocate -l 1G /mnt/1GB.swap
+sudo dd if=/dev/zero of=/mnt/1GB.swap bs=1024 count=1048576
+sudo mkswap /mnt/1GB.swap
+swapon /mnt/1GB.swap
+
+
+Add this line to the end of /etc/fstab to make the change permanent.
+
+/mnt/1GB.swap  none  swap  sw 0  0
+
+
+# A typical default value for swappiness is 60. The higher the number (up to 100), the more often swap is utilized.
+vm.swappiness=10
+
+
+# making a system use HDD instead of RAM
+
+
+sysctl  -w vm.vfs_cache_pressure=1024
+sysctl -w vm.swappiness=100
+
+echo    75 | sudo tee /proc/sys/vm/dirty_background_ratio
+echo  1000 | sudo tee /proc/sys/vm/dirty_expire_centisecs
+echo    80 | sudo tee /proc/sys/vm/dirty_ratio

@@ -1,0 +1,44 @@
+sudo su -l
+
+apt update; apt upgrade
+
+docker images
+docker stop ef04a26ae115  c8f1fc925df0  17ffcc6fcc85  c9059742c275 c9059742c275
+dockr rmi <list of images>
+
+
+apt autoremove
+
+rm -rf /dev/shm/*
+
+
+sync
+
+rm -rf steem-docker
+
+
+
+
+
+cd ~jatsir
+
+
+git clone https://github.com/Someguy123/steem-docker.git
+
+cd steem-docker
+
+
+{
+  "cipher_keys": "",
+  "ws_server": "wss://sgtg.steem.house:8090",
+  "ws_user": "",
+  "ws_password": ""
+}
+
+./run.sh enter
+cli_wallet -swss://gtg.steem.house:8090
+
+
+node --max-old-space-size=8192 --optimize-for-size  --max_old_space_size=8192 --optimize_for_size bot.js
+
+cmake -DCMAKE_BUILD_TYPE=Release -DCLEAR_VOTES=OFF -DLOW_MEMORY_NODE=OFF

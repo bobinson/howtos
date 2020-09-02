@@ -1,0 +1,44 @@
+
+script -a -f /root/logs/log-`date +%F`
+
+Sysctl -p
+
+### IMPROVE SYSTEM MEMORY MANAGEMENT ###
+
+# Increase size of file handles and inode cache
+fs.file-max = 2097152
+
+# Do less swapping - avoid thrashing
+vm.swappiness = 10
+
+# swappiness this control is used to define how aggressively the kernel swaps out anonymous memory relative to pagecache # and other caches. Increasing the value increases the amount of swapping. The default value is 60.
+
+# http://www.backwardcompatible.net/139-Reducing-dentry-slab-usage-on-machines-with-a-lot-of-RAM
+
+vm.dirty_ratio = 60
+vm.dirty_background_ratio = 2
+vm.overcommit_ratio=2
+
+
+#vfs_cache_pressure this variable controls the tendency of the kernel to reclaim the memory which is used for 
+#caching of VFS caches, versus pagecache and swap. Increasing this value increases the rate at which VFS caches
+#are reclaimed.
+
+vm.vfs_cache_pressure=50
+
+
+
+# vm.min_free_kbytes (physical memory to try to keep as reserve to prevent OOM, default depends on RAM)
+
+vm.min_free_kbytes=262144
+
+
+#large files older than 6 months
+find /path -mtime +180 -size +1G
+
+
+# rsync
+
+rsync -avz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /root/bigfile.txt 198.211.117.129:/root/
+
+
