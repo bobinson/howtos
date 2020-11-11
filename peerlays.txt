@@ -1,0 +1,1 @@
+curl --data '{"jsonrpc":"2.0","method":"get_proposed_transactions", "params":["1.2.1"],"id":0}' --compressed ZZZhttps://API:PORT
