@@ -9,3 +9,8 @@ curl --silent --data '{"jsonrpc": "2.0", "method": "get_chain_properties", "para
 
 # Create chain parameter change proposal
 propose_parameter_change 1.2.7 "2021-10-15T21:00:00" {"extensions":{"son_pay_time": 1800}} true 
+
+
+# create an account in the faucet
+curl -X POST http://127.0.0.1:5000/api/v1/accounts -H "Content-Type: application/json" -d '{ "account":{ "name":"new-account165161", "owner_key":"TEST6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV", "active_key":"TEST6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV", "memo_key":"TEST6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV" } }'
+{"error":{"base":["Account exists"]}}
