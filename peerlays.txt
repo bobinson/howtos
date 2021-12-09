@@ -22,3 +22,7 @@ create_asset nathan "LARNYX" 8 {"max_supply" : 1000000000000000,"market_fee_perc
 
 
 issue_asset nathan 10000000 LARNYX "" true
+
+
+create_vesting_balance upvoter 9000 TEST true true
+vote_for_witness upvoter threespeak-testnet  true true
