@@ -26,3 +26,7 @@ issue_asset nathan 10000000 LARNYX "" true
 
 create_vesting_balance upvoter 9000 TEST true true
 vote_for_witness upvoter threespeak-testnet  true true
+
+# truncating the chain, one example
+truncate -s 1481579840 ./witness_node_data_dir/blockchain/database/block_num_to_block/index
+ LIB was 46299370, so 46299370 * 32 = 1481579840
