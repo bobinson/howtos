@@ -4,3 +4,5 @@ gpg2 --list-keys --keyid-format LONG # list GPG finger prints
 alias ssh="gpg-connect-agent updatestartuptty /bye > /dev/null; ssh" # gpg and ssh
 
 gpg --export-ssh-key user@email.com 
+
+gpg --expert --edit-key 663A1888

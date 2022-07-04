@@ -37,3 +37,9 @@ truncate -s 1481579840 ./witness_node_data_dir/blockchain/database/block_num_to_
 
 
 update_witness initX "witnessinfo.com" "NEW_SIGNING_KEY" true
+
+
+# finding the blockchain version
+curl --silent --data '{"jsonrpc": "2.0", "method": "get_version_info", "params": [], "id": 1}' http://witness.serverpit.com:8090/rpc | jq -r ".result"
+
+
